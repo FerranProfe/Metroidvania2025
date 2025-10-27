@@ -13,9 +13,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float groundDistance;
 
+    [SerializeField]
+    private GameObject fireBallPrefab;
+    [SerializeField]
+    private Transform spawnPoint;
+    [SerializeField]
+    private float fireBallCost;
+    [SerializeField]
+    private float coldDown;
+    private float timePassFireBall;
 
     //temp
     private int maxJumps=1;
+    public float mana;
+    public float maxMana;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -58,6 +69,16 @@ public class PlayerController : MonoBehaviour
                 jumpCount++;
             }
             CheckJump();
+
+            if (Input.GetButtonDown("FireBall"))
+            {
+                if (coldDown <= timePassFireBall && mana >= fireBallCost)
+                {
+                    Instantiate(fireBallPrefab, spawnPoint.position, spawnPoint.rotation);
+                    mana -= fireBallCost;
+                    timePassFireBall = 0;
+                }
+            }
         }
         else
         {
@@ -73,7 +94,15 @@ public class PlayerController : MonoBehaviour
                 comboCount = Mathf.Clamp(comboCount + 1, 0, 2);
                 animator.SetInteger("Combo", comboCount);
             }
+
+            if (Input.GetButtonDown("Fire2") && comboCount==0)
+            {
+                animator.SetTrigger("AttackHeavy");
+                comboCount = 1;
+            }
         }
+
+        timePassFireBall += Time.deltaTime;
     }
 
     public void CheckCombo1()
@@ -89,6 +118,11 @@ public class PlayerController : MonoBehaviour
     {
         comboCount = 0;
         animator.SetInteger("Combo", comboCount);
+    }
+
+    public void FinishHeavyAttack()
+    {
+        comboCount = 0;
     }
 
     void CheckJump()
