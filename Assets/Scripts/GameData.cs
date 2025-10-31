@@ -1,0 +1,62 @@
+using System;
+using UnityEngine;
+
+[Serializable]
+public class GameData 
+{
+    [SerializeField]
+    private float playerLife;
+    [SerializeField]
+    private float playerMaxLife;
+    [SerializeField]
+    private float playerMana;
+    [SerializeField]
+    private float playerMaxMana;
+    [SerializeField]
+    private float playerDamage;
+    [SerializeField]
+    private float fireballDamage;
+    [SerializeField]
+    private float heavyDamage;
+
+    public float PlayerLife
+    {
+        get { return playerLife; }
+        set { playerLife = value; }
+    } 
+
+    public float PlayerMaxLife
+    {
+        get { return playerMaxLife; }
+        set { playerMaxLife = value; }
+    }
+
+    public float PlayerMana
+    {
+        get { return playerMana; }
+        set { playerMana = value; }
+    }
+
+    public float PlayerMaxMana
+    {
+        get { return playerMaxMana; }
+        set { playerMaxMana = value; }
+    }
+    public float PlayerDamage
+    {
+        get { return playerDamage; }
+        set { playerDamage = value; }
+    }
+
+    public float FireBallDamage
+    {
+        get { return fireballDamage; }
+        set { fireballDamage = value; }
+    }
+
+    public float HeavyDamage
+    {
+        get { return heavyDamage; }
+        set { heavyDamage = value; }
+    }
+}

@@ -22,17 +22,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float coldDown;
     private float timePassFireBall;
+    private LevelManager levelManager;
 
     //temp
     private int maxJumps=1;
-    public float mana;
-    public float maxMana;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
     }
 
     // Update is called once per frame
@@ -72,10 +73,11 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetButtonDown("FireBall"))
             {
-                if (coldDown <= timePassFireBall && mana >= fireBallCost)
+                if (coldDown <= timePassFireBall && GameManager.instance.GetGameData.PlayerMana >= fireBallCost)
                 {
                     Instantiate(fireBallPrefab, spawnPoint.position, spawnPoint.rotation);
-                    mana -= fireBallCost;
+                    GameManager.instance.GetGameData.PlayerMana -= fireBallCost;
+                    levelManager.UpdateMana();
                     timePassFireBall = 0;
                 }
             }
@@ -156,7 +158,33 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("Le he dado al enemigo");
+            int comboAnimator = animator.GetInteger("Combo");
+            if (comboAnimator > 0)
+            {
+                collision.gameObject.GetComponent<EnemyController>().TakeDamage(GameManager.instance.GetGameData.PlayerDamage);
+            }
+            else
+            {
+                collision.gameObject.GetComponent<EnemyController>().TakeDamage(GameManager.instance.GetGameData.HeavyDamage);
+            }
+        }
+    }
+
+    public void TakeDamage(float _damage)
+    {
+        GameManager.instance.GetGameData.PlayerLife -= _damage;
+        levelManager.UpdateLife();
+        if (GameManager.instance.GetGameData.PlayerLife <= 0)
+        {
+            //Muerte
+            animator.SetTrigger("Death");
+            //Sacar el panel gameover
+            //Cuando vuelve al punto de guardado
+        }
+        else
+        {
+            //Recibe daño
+            animator.SetTrigger("Hit");
         }
     }
 

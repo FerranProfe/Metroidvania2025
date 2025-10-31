@@ -10,9 +10,12 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private float speed;
     private bool playerDetected;
+    public bool attacking;
     private Rigidbody2D rb;
-    private Animator animator;
-    private Transform player;
+    public Animator animator;
+    public Transform player;
+    public float stopDistance;
+    private bool estoymuerto;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Start()
@@ -24,16 +27,32 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        if (playerDetected == true)
+        if (estoymuerto == true)
+        {
+            rb.linearVelocity = Vector3.zero;
+            return;
+        }
+
+        if (playerDetected == true && attacking ==false)
         {
             Vector3 distancia = player.position - transform.position;
             if (distancia.x > 0)//derecha
             {
                 rb.linearVelocity = speed * Vector2.right;
+                transform.eulerAngles = new Vector3(0, 180, 0);
             }
             else if (distancia.x<0)//izquierda
             {
                 rb.linearVelocity=speed* Vector2.left;
+                transform.eulerAngles = Vector3.zero;
+            }
+
+            Vector3 distance=player.position - transform.position;
+            float distanceSQR = distance.sqrMagnitude;
+            if (distanceSQR <= Mathf.Pow(stopDistance,2))
+            {
+                attacking = true;
+                rb.linearVelocity = Vector2.zero;
             }
         }
     }
@@ -42,8 +61,41 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag=="Player")
         {
-            playerDetected = true;
+            animator.SetTrigger("Alert");
+            Invoke("StartMoving", animator.GetCurrentAnimatorStateInfo(0).length);
             player = collision.transform;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
+        }
+    }
+
+    private void StartMoving()
+    {
+        playerDetected = true;
+        animator.SetBool("PlayerDetected", true);
+    }
+
+    public void TakeDamage(float _damage)
+    {
+        life-= _damage;
+        if(life <= 0)
+        {
+            //muerte
+            animator.SetTrigger("Death");
+            rb.gravityScale = 0;
+            GetComponent<Collider2D>().enabled = false;
+            estoymuerto = true;
+        }
+        else
+        {
+            //hit
+            animator.SetTrigger("Hit");
         }
     }
 }
