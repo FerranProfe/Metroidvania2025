@@ -23,9 +23,6 @@ public class PlayerController : MonoBehaviour
     private float coldDown;
     private float timePassFireBall;
     private LevelManager levelManager;
-
-    //temp
-    private int maxJumps=1;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -64,7 +61,7 @@ public class PlayerController : MonoBehaviour
             }
 
             //Esto es salto
-            if (Input.GetButtonDown("Jump") && jumpCount < maxJumps)
+            if (Input.GetButtonDown("Jump") && jumpCount < GameManager.instance.GetGameData.MaxJumps)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 jumpCount++;
