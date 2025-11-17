@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -23,6 +24,9 @@ public class PlayerController : MonoBehaviour
     private float coldDown;
     private float timePassFireBall;
     private LevelManager levelManager;
+    private bool knockBack;
+    [SerializeField]
+    private float knockBackTime;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,6 +40,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (knockBack == true)
+        {
+            return;
+        }
+
         //Esto es movimiento
         if (comboCount == 0)
         {
@@ -158,11 +167,25 @@ public class PlayerController : MonoBehaviour
             int comboAnimator = animator.GetInteger("Combo");
             if (comboAnimator > 0)
             {
-                collision.gameObject.GetComponent<EnemyController>().TakeDamage(GameManager.instance.GetGameData.PlayerDamage);
+                try
+                {
+                    collision.gameObject.GetComponent<EnemyController>().TakeDamage(GameManager.instance.GetGameData.PlayerDamage);
+                }
+                catch
+                {
+                    collision.gameObject.GetComponent<BossController>().TakeDamage(GameManager.instance.GetGameData.PlayerDamage);
+                }
             }
             else
             {
-                collision.gameObject.GetComponent<EnemyController>().TakeDamage(GameManager.instance.GetGameData.HeavyDamage);
+                try
+                {
+                    collision.gameObject.GetComponent<EnemyController>().TakeDamage(GameManager.instance.GetGameData.HeavyDamage);
+                }
+                catch
+                {
+                    collision.gameObject.GetComponent<BossController>().TakeDamage(GameManager.instance.GetGameData.HeavyDamage);
+                }
             }
         }
     }
@@ -183,6 +206,13 @@ public class PlayerController : MonoBehaviour
             //Recibe daño
             animator.SetTrigger("Hit");
         }
+    }
+
+    public IEnumerator KnockBackCoroutine()
+    {
+        knockBack = true;
+        yield return new WaitForSeconds(knockBackTime);
+        knockBack = false;
     }
 
 }
