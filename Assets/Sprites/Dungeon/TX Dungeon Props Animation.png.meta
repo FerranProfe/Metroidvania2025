@@ -610,10 +610,10 @@ TextureImporter:
       name: TX Dungeon Props Animation_14
       rect:
         serializedVersion: 2
-        x: 26
-        y: 287
-        width: 39
-        height: 68
+        x: 27
+        y: 288
+        width: 37
+        height: 66
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -633,9 +633,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 91
-        y: 287
-        width: 38
-        height: 68
+        y: 288
+        width: 37
+        height: 66
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -654,10 +654,10 @@ TextureImporter:
       name: TX Dungeon Props Animation_16
       rect:
         serializedVersion: 2
-        x: 156
-        y: 287
+        x: 155
+        y: 288
         width: 37
-        height: 68
+        height: 66
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -676,10 +676,10 @@ TextureImporter:
       name: TX Dungeon Props Animation_17
       rect:
         serializedVersion: 2
-        x: 225
-        y: 275
-        width: 32
-        height: 80
+        x: 220
+        y: 288
+        width: 37
+        height: 66
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -698,10 +698,10 @@ TextureImporter:
       name: TX Dungeon Props Animation_18
       rect:
         serializedVersion: 2
-        x: 295
-        y: 275
-        width: 26
-        height: 80
+        x: 284
+        y: 288
+        width: 37
+        height: 66
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -720,10 +720,10 @@ TextureImporter:
       name: TX Dungeon Props Animation_19
       rect:
         serializedVersion: 2
-        x: 365
-        y: 283
-        width: 20
-        height: 72
+        x: 349
+        y: 288
+        width: 37
+        height: 66
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -742,10 +742,10 @@ TextureImporter:
       name: TX Dungeon Props Animation_20
       rect:
         serializedVersion: 2
-        x: 438
-        y: 287
-        width: 13
-        height: 68
+        x: 413
+        y: 288
+        width: 37
+        height: 66
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

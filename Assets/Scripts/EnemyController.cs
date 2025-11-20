@@ -7,15 +7,14 @@ public class EnemyController : MonoBehaviour
     private float life;
     [SerializeField]
     private float damage;
-    [SerializeField]
-    private float speed;
-    private bool playerDetected;
+    public float speed;
+    public bool playerDetected;
     public bool attacking;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     public Animator animator;
     public Transform player;
     public float stopDistance;
-    private bool estoymuerto;
+    public bool estoymuerto;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Start()
@@ -67,7 +66,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {

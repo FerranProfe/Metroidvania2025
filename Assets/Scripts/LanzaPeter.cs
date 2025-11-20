@@ -4,6 +4,8 @@ public class LanzaPeter : MonoBehaviour
 {
     [SerializeField]
     private float speed;
+    [SerializeField]
+    private float damage;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,6 +25,7 @@ public class LanzaPeter : MonoBehaviour
         {
             //Le hace pupa al player
             Debug.Log("Le doy al player");
+            collision.GetComponent<PlayerController>().TakeDamage(damage);
         }
         Destroy(gameObject);
     }

@@ -24,6 +24,10 @@ public class GameData
     private int maxJumps;
     [SerializeField]
     private bool boss1;
+    [SerializeField]
+    private bool palancaPuerta;
+    [SerializeField]
+    private bool expansionVit1;
 
     public float PlayerLife
     {
@@ -82,5 +86,17 @@ public class GameData
     {
         get { return boss1; }
         set { boss1 = value; }
+    }
+
+    public bool PalancaPuerta
+    {
+        get { return palancaPuerta; }
+        set { palancaPuerta = value; }
+    }
+
+    public bool ExpansionVit1
+    {
+        get { return expansionVit1; }
+        set { expansionVit1 = value; }
     }
 }
