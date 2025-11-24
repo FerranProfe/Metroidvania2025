@@ -30,6 +30,9 @@ public class LevelManager : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").transform.rotation =
                 doorsPoints[GameManager.instance.doorToGo].rotation;
         }
+
+        lifeBar.rectTransform.sizeDelta = new Vector2(GameManager.instance.GetGameData.PlayerMaxLife * 5, 50);
+        lifeBar.transform.parent.GetComponent<RectTransform>().sizeDelta = new Vector2(GameManager.instance.GetGameData.PlayerMaxLife * 5, 50);
     }
 
     // Update is called once per frame

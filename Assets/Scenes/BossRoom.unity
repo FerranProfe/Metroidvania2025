@@ -569,7 +569,9 @@ MonoBehaviour:
     heavyDamage: 0
     sceneSave: 0
     maxJumps: 1
-    boss1: 1
+    boss1: 0
+    palancaPuerta: 0
+    expansionVit1: 0
   slot: 0
   doorToGo: 0
   comeFromLoadGame: 0
