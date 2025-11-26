@@ -58,7 +58,21 @@ public class ExpansionVit : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            switch (expansionVitName)
+            {
+                case "Vit1":
+                    GameManager.instance.GetGameData.ExpansionVit1 = true;
+                    GameManager.instance.GetGameData.PlayerLife += lifeToAdd;
+                    GameManager.instance.GetGameData.PlayerMaxLife += lifeToAdd;
+                    GameObject.Find("LevelManager").GetComponent<LevelManager>().UpdateLife();
+                    break;
+                case "Vit2":
 
+                    break;
+                case "Vit3":
+
+                    break;
+            }
         }
     }
 }

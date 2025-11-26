@@ -44,6 +44,8 @@ public class LevelManager : MonoBehaviour
     public void UpdateLife()
     {
         lifeBar.fillAmount = GameManager.instance.GetGameData.PlayerLife / GameManager.instance.GetGameData.PlayerMaxLife;
+        lifeBar.rectTransform.sizeDelta = new Vector2(GameManager.instance.GetGameData.PlayerMaxLife * 5, 50);
+        lifeBar.transform.parent.GetComponent<RectTransform>().sizeDelta = new Vector2(GameManager.instance.GetGameData.PlayerMaxLife * 5, 50);
     }
 
     public void UpdateMana()

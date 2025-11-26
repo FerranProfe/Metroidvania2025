@@ -1120,7 +1120,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -8763,6 +8763,8 @@ GameObject:
   - component: {fileID: 938147163}
   - component: {fileID: 938147162}
   - component: {fileID: 938147161}
+  - component: {fileID: 938147164}
+  - component: {fileID: 938147165}
   m_Layer: 0
   m_Name: ExpansionVitalidad
   m_TagString: Untagged
@@ -8782,10 +8784,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595a1905f035ed947b245a408e5e9c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExpansionVit
-  lifeToAdd: 0
+  lifeToAdd: 50
   expansionVitName: Vit1
-  howMuchMoveInAnim: 0
-  speed: 0
+  howMuchMoveInAnim: 0.5
+  speed: 1
 --- !u!212 &938147162
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8832,7 +8834,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 5773702088218953546, guid: 4d6ce872d1c67dc4c94687051937cd8a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8853,13 +8855,77 @@ Transform:
   m_GameObject: {fileID: 938147160}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.482, y: 6.054, z: 0}
+  m_LocalPosition: {x: 7.482, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 183097232}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &938147164
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938147160}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.28125, y: 0.46875}
+  m_Direction: 0
+--- !u!50 &938147165
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938147160}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &965350550
 GameObject:
   m_ObjectHideFlags: 0
@@ -20012,11 +20078,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7226846053183309321, guid: 8dc1d204d2e0b114fb8be53479c736f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.95
+      value: 58.72
       objectReference: {fileID: 0}
     - target: {fileID: 7226846053183309321, guid: 8dc1d204d2e0b114fb8be53479c736f9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.04
+      value: -0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7226846053183309321, guid: 8dc1d204d2e0b114fb8be53479c736f9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20056,7 +20122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7296156826639137237, guid: 8dc1d204d2e0b114fb8be53479c736f9, type: 3}
       propertyPath: sceneToGo
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21667,8 +21733,8 @@ MonoBehaviour:
     playerMaxLife: 100
     playerMana: 0
     playerMaxMana: 0
-    playerDamage: 0
-    fireballDamage: 0
+    playerDamage: 50
+    fireballDamage: 50
     heavyDamage: 0
     sceneSave: 0
     maxJumps: 2
@@ -22726,7 +22792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7226846053183309321, guid: 8dc1d204d2e0b114fb8be53479c736f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.95
+      value: -5.04
       objectReference: {fileID: 0}
     - target: {fileID: 7226846053183309321, guid: 8dc1d204d2e0b114fb8be53479c736f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22766,7 +22832,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7296156826639137237, guid: 8dc1d204d2e0b114fb8be53479c736f9, type: 3}
       propertyPath: doorPoint
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296156826639137237, guid: 8dc1d204d2e0b114fb8be53479c736f9, type: 3}
+      propertyPath: sceneToGo
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
