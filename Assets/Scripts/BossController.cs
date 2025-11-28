@@ -71,7 +71,7 @@ public class BossController : MonoBehaviour
 
         //Temporal para testear
         //currentState = BossStates.Spikes;
-        //ChangeState();
+        ChangeState();
         /////////////////////
     }
 
